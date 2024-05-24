@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://c2t0six31kkhl"]
+[gd_scene load_steps=13 format=3 uid="uid://c2t0six31kkhl"]
 
 [ext_resource type="PackedScene" uid="uid://cwcsg6lhoevl1" path="res://scenes/killzone.tscn" id="1_2injs"]
 [ext_resource type="Script" path="res://scripts/rp_snail.gd" id="1_t7oji"]
 [ext_resource type="Texture2D" uid="uid://dfmf7rp3c6aca" path="res://funnyimg4game/snail-Sheet.png" id="2_eth56"]
+[ext_resource type="Script" path="res://scripts/health.gd" id="2_hj84n"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2m8sp"]
 atlas = ExtResource("2_eth56")
@@ -59,6 +60,9 @@ size = Vector2(57, 24)
 
 [node name="RPSnail" type="Node2D"]
 script = ExtResource("1_t7oji")
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("2_hj84n")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_f7sgp")
