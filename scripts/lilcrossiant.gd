@@ -24,7 +24,11 @@ func _process(delta):
 
 func _on_health_health_depleted():
 	direction=0
-	animated_sprite.play("brutal death")
+	var probability =randf()
+	if probability<=0.1:
+		animated_sprite.play("brutal death")
+	else:
+		animated_sprite.play("death")
 	timer.start()
 
 	
