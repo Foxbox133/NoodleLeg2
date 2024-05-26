@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://c2t0six31kkhl"]
+[gd_scene load_steps=13 format=3 uid="uid://c2t0six31kkhl"]
 
-[ext_resource type="PackedScene" uid="uid://cwcsg6lhoevl1" path="res://scenes/killzone.tscn" id="1_2injs"]
 [ext_resource type="Script" path="res://scripts/rp_snail.gd" id="1_t7oji"]
 [ext_resource type="Texture2D" uid="uid://dfmf7rp3c6aca" path="res://funnyimg4game/snail-Sheet.png" id="2_eth56"]
+[ext_resource type="Script" path="res://scripts/health.gd" id="2_hj84n"]
+[ext_resource type="Script" path="res://scripts/hurtbox.gd" id="5_si8aw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2m8sp"]
 atlas = ExtResource("2_eth56")
@@ -54,11 +55,16 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_q1wg4"]
-size = Vector2(57, 24)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ctm8s"]
+size = Vector2(53, 24)
 
 [node name="RPSnail" type="Node2D"]
 script = ExtResource("1_t7oji")
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("2_hj84n")
+maxHealth = 1
+health = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_f7sgp")
@@ -74,8 +80,15 @@ target_position = Vector2(-28, 0)
 position = Vector2(0, 2)
 target_position = Vector2(27, 0)
 
-[node name="Killzone" parent="." instance=ExtResource("1_2injs")]
+[node name="HurtBox" type="Area2D" parent="." node_paths=PackedStringArray("health")]
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("5_si8aw")
+health = NodePath("../Health")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 position = Vector2(-1.5, 3)
-shape = SubResource("RectangleShape2D_q1wg4")
+shape = SubResource("RectangleShape2D_ctm8s")
+debug_color = Color(0, 0.649895, 0.122899, 0.42)
+
+[connection signal="healthDepleted" from="Health" to="." method="_on_health_health_depleted"]
