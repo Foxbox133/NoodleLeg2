@@ -12,6 +12,7 @@ func displayPoints(points):
 
 
 
+
 func _on_game_manager_update_points_score(points):
 	displayPoints(points)
 	
