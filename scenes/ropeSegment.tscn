@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://c455tdov1p83v"]
+
+[ext_resource type="Texture2D" uid="uid://b4nj4yr13mqjn" path="res://funnyimg4game/coinFella3.png" id="1_f4yen"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e4ce8"]
+
+[node name="segment" type="RigidBody2D"]
+mass = 0.1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_f4yen")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.415, 1.05)
+shape = SubResource("CapsuleShape2D_e4ce8")
