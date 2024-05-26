@@ -1,9 +1,16 @@
 extends Node
 
-var score = 0
+var points = 0
 
-@onready var score_label = $scoreLabel
+
 
 func add_point():
-	score +=1
-	score_label.text= "You have " + str(score) + " coins!"
+	points +=1
+	var interface = get_node("Interface")
+	print(interface)
+	if (interface != null):
+		interface.displayPoints(points)
+	emit_signal("updatePointsScore", points)
+
+
+signal updatePointsScore(points)

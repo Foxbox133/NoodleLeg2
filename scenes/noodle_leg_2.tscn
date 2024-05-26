@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://n34s3ge2xnro"]
+[gd_scene load_steps=18 format=3 uid="uid://n34s3ge2xnro"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_5hp3r"]
 [ext_resource type="PackedScene" uid="uid://ch1ebmgsq6ngt" path="res://scenes/noodle.tscn" id="1_gei24"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://syq80rl0hsls" path="res://funnyimg4game/blueSky.png" id="6_fbmyt"]
 [ext_resource type="PackedScene" uid="uid://buisa1a6qmxkm" path="res://scenes/coin.tscn" id="7_qpyfs"]
 [ext_resource type="PackedScene" uid="uid://c2t0six31kkhl" path="res://scenes/rp_snail.tscn" id="9_6g6e4"]
+[ext_resource type="PackedScene" uid="uid://cbj0mj58x6omb" path="res://scenes/interface.tscn" id="9_f4vta"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bc6jt"]
 texture = ExtResource("2_et80k")
@@ -997,16 +998,22 @@ distance = 1.0
 [node name="Noodle Leg 2" type="Node2D"]
 position = Vector2(8, 80)
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Interface" parent="CanvasLayer" instance=ExtResource("9_f4vta")]
+
 [node name="GameManager" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("1_5hp3r")
 
-[node name="scoreLabel" type="Label" parent="GameManager"]
-offset_left = 1369.0
-offset_top = -36.0
-offset_right = 1499.0
-offset_bottom = -13.0
-text = "You have X coins"
+[node name="Noodle" parent="." instance=ExtResource("1_gei24")]
+top_level = true
+position = Vector2(13, 66)
+
+[node name="Camera2D" type="Camera2D" parent="Noodle"]
+zoom = Vector2(4, 4)
+position_smoothing_enabled = true
+position_smoothing_speed = 2.0
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(14, -3)
@@ -1083,7 +1090,7 @@ region_rect = Rect2(0, 0, 368, 208)
 [node name="Coins" type="Node" parent="."]
 
 [node name="Coin" parent="Coins" instance=ExtResource("7_qpyfs")]
-position = Vector2(140, -15)
+position = Vector2(73, 51)
 
 [node name="Coin2" parent="Coins" instance=ExtResource("7_qpyfs")]
 position = Vector2(193, -30)
@@ -1103,18 +1110,10 @@ position = Vector2(1441, 51)
 [node name="Coin7" parent="Coins" instance=ExtResource("7_qpyfs")]
 position = Vector2(935, -40)
 
-[node name="Noodle" parent="." instance=ExtResource("1_gei24")]
-top_level = true
-position = Vector2(13, 66)
-
-[node name="Camera2D" type="Camera2D" parent="Noodle"]
-position = Vector2(9, 13)
-zoom = Vector2(4, 4)
-limit_bottom = 200
-limit_smoothed = true
-
 [node name="RPSnail" parent="." instance=ExtResource("9_6g6e4")]
 position = Vector2(66, -162)
 
 [node name="Platform3" parent="." instance=ExtResource("3_jool0")]
 position = Vector2(-48, -129)
+
+[connection signal="updatePointsScore" from="GameManager" to="CanvasLayer/Interface" method="_on_game_manager_update_points_score"]
