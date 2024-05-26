@@ -11,6 +11,9 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 @onready var noodleSprite = $AnimatedSprite2D
 
+@onready var gun = $Gun
+
+
 
 
 func _physics_process(delta):
@@ -31,6 +34,7 @@ func _physics_process(delta):
 	
 	if direction > 0:
 		noodleSprite.flip_h=false
+		
 	elif direction <0:
 		noodleSprite.flip_h=true
 	if !(is_on_floor()):
@@ -44,6 +48,7 @@ func _physics_process(delta):
 				noodleSprite.play("idle")
 		else:
 			noodleSprite.play("running")	
+			
 	
 	if direction:
 		velocity.x = direction * SPEED
