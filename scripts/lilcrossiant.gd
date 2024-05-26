@@ -1,5 +1,5 @@
 extends Node2D
-const SPEED =60
+const SPEED =40
 # Called when the node enters the scene tree for the first time.
 var direction = 1
 @onready var ray_cast_right = $RayCastRight

@@ -1,10 +1,11 @@
-[gd_scene load_steps=29 format=3 uid="uid://1uqgmfsn2e7m"]
+[gd_scene load_steps=28 format=3 uid="uid://1uqgmfsn2e7m"]
 
 [ext_resource type="Script" path="res://scripts/lilcrossiant.gd" id="1_ehhuu"]
 [ext_resource type="Script" path="res://scripts/health.gd" id="2_encd1"]
 [ext_resource type="Texture2D" uid="uid://wj2xreldyf4d" path="res://funnyimg4game/Croissante.squish.special-Sheet.png" id="3_wgt6s"]
 [ext_resource type="Script" path="res://scripts/hurtbox.gd" id="4_0s7ai"]
 [ext_resource type="Texture2D" uid="uid://c7p44sdotsofx" path="res://funnyimg4game/Croissante.squish-Sheet.png" id="4_uqfj1"]
+[ext_resource type="Texture2D" uid="uid://ceh3e6ldo1m4s" path="res://funnyimg4game/Crossiante.walk-Sheet.png" id="5_48wf1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mreq0"]
 atlas = ExtResource("3_wgt6s")
@@ -70,25 +71,17 @@ region = Rect2(384, 0, 64, 32)
 atlas = ExtResource("4_uqfj1")
 region = Rect2(448, 0, 64, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_c0yxe"]
-atlas = ExtResource("3_wgt6s")
+[sub_resource type="AtlasTexture" id="AtlasTexture_cbgqk"]
+atlas = ExtResource("5_48wf1")
 region = Rect2(0, 0, 64, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_i0xht"]
-atlas = ExtResource("3_wgt6s")
+[sub_resource type="AtlasTexture" id="AtlasTexture_3uqvj"]
+atlas = ExtResource("5_48wf1")
 region = Rect2(64, 0, 64, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6j3m2"]
-atlas = ExtResource("3_wgt6s")
+[sub_resource type="AtlasTexture" id="AtlasTexture_ss4si"]
+atlas = ExtResource("5_48wf1")
 region = Rect2(128, 0, 64, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fyc62"]
-atlas = ExtResource("3_wgt6s")
-region = Rect2(64, 0, 64, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lu85f"]
-atlas = ExtResource("3_wgt6s")
-region = Rect2(0, 0, 64, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3mwpw"]
 animations = [{
@@ -105,16 +98,16 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_vpeog")
 }, {
-"duration": 1.0,
+"duration": 1.5,
 "texture": SubResource("AtlasTexture_711m8")
 }, {
-"duration": 1.0,
+"duration": 1.5,
 "texture": SubResource("AtlasTexture_y4twq")
 }, {
-"duration": 1.0,
+"duration": 1.5,
 "texture": SubResource("AtlasTexture_vjmms")
 }, {
-"duration": 1.0,
+"duration": 1.5,
 "texture": SubResource("AtlasTexture_v7t80")
 }],
 "loop": false,
@@ -134,16 +127,16 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_n6oor")
 }, {
-"duration": 1.0,
+"duration": 1.5,
 "texture": SubResource("AtlasTexture_emr3n")
 }, {
-"duration": 1.0,
+"duration": 1.5,
 "texture": SubResource("AtlasTexture_mjmqc")
 }, {
-"duration": 1.0,
+"duration": 1.5,
 "texture": SubResource("AtlasTexture_xpk0l")
 }, {
-"duration": 1.0,
+"duration": 1.5,
 "texture": SubResource("AtlasTexture_h32bm")
 }],
 "loop": false,
@@ -152,32 +145,23 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_c0yxe")
+"texture": SubResource("AtlasTexture_cbgqk")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_i0xht")
+"texture": SubResource("AtlasTexture_3uqvj")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_i0xht")
+"texture": SubResource("AtlasTexture_ss4si")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6j3m2")
+"texture": SubResource("AtlasTexture_3uqvj")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6j3m2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fyc62")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_i0xht")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lu85f")
+"texture": SubResource("AtlasTexture_3uqvj")
 }],
 "loop": true,
 "name": &"idle",
-"speed": 8.0
+"speed": 6.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8jdnp"]
@@ -195,6 +179,8 @@ health = 2
 sprite_frames = SubResource("SpriteFrames_3mwpw")
 animation = &"brutal death"
 autoplay = "idle"
+frame = 7
+frame_progress = 1.0
 
 [node name="RayCastRight" type="RayCast2D" parent="."]
 position = Vector2(0, 8)
@@ -215,7 +201,7 @@ position = Vector2(-1.5, 7.5)
 shape = SubResource("RectangleShape2D_8jdnp")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 1.15
+wait_time = 2.5
 
 [connection signal="healthDepleted" from="Health" to="." method="_on_health_health_depleted"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

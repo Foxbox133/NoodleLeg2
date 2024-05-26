@@ -43,4 +43,4 @@ sprite_frames = SubResource("SpriteFrames_bpeg3")
 
 [node name="ShootingPoint" type="Marker2D" parent="WeaponPivot/GunArm"]
 unique_name_in_owner = true
-position = Vector2(15.0588, 0)
+position = Vector2(15, -2)
