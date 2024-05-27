@@ -1,9 +1,9 @@
 [gd_scene load_steps=13 format=3 uid="uid://blkbwah67652r"]
 
-[ext_resource type="PackedScene" path="res://scenes/interface.tscn" id="1_i76p5"]
+[ext_resource type="PackedScene" uid="uid://cbj0mj58x6omb" path="res://scenes/interface.tscn" id="1_i76p5"]
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="2_jx2nq"]
 [ext_resource type="PackedScene" uid="uid://ch1ebmgsq6ngt" path="res://scenes/noodle.tscn" id="3_pyios"]
-[ext_resource type="Texture2D" path="res://funnyimg4game/level_tilesheet2.png" id="3_wyjm2"]
+[ext_resource type="Texture2D" uid="uid://cg8xqqokambh4" path="res://funnyimg4game/level_tilesheet2.png" id="3_wyjm2"]
 [ext_resource type="Texture2D" uid="uid://plvva76lww1r" path="res://funnyimg4game/GrassLand_Background_Guide.png" id="4_gqah1"]
 [ext_resource type="PackedScene" uid="uid://buisa1a6qmxkm" path="res://scenes/coin.tscn" id="5_kg1s0"]
 [ext_resource type="PackedScene" uid="uid://c5dfejv07cd62" path="res://physics coin.tscn" id="6_8tjtf"]

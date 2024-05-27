@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cbj0mj58x6omb"]
 
-[ext_resource type="Script" path="res://scenes/Interface.gd" id="1_letj2"]
+[ext_resource type="Script" path="res://scripts/Interface.gd" id="1_letj2"]
 [ext_resource type="Texture2D" uid="uid://bybutg5swq3ox" path="res://funnyimg4game/coinFella.png" id="2_7lqu5"]
 
 [node name="Interface" type="Control"]

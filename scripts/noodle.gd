@@ -119,13 +119,9 @@ func _physics_process(delta):
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	
-	if direction > 0:
-		noodleSprite.flip_h=false
-		
-	elif direction <0:
-		noodleSprite.flip_h=true
+	
 	if ( (!isFloor()) && !checkSlope()):
-		noodleSprite.play("jump")
+		noodleSprite.play("jump right")
 	else:
 		if direction == 0:
 			if (Input.is_action_pressed("crouch")) :
@@ -133,8 +129,12 @@ func _physics_process(delta):
 				noodleSprite.play("crouch")
 			else:
 				noodleSprite.play("idle")
+		elif direction<0:
+			noodleSprite.play("Run Left")
+			noodleSprite.flip_h=true	
 		else:
-			noodleSprite.play("running")	
+			noodleSprite.play("Run Right")
+			noodleSprite.flip_h=false	
 			
 	
 	if direction:
