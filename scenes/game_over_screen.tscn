@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://fpw8sfjriklb"]
+[gd_scene load_steps=4 format=3 uid="uid://dgu40la7hpcuu"]
 
 [ext_resource type="FontFile" uid="uid://mtisoocy6hs8" path="res://Minecraft.ttf" id="1_2lpt6"]
+[ext_resource type="Script" path="res://scripts/game_over_screen.gd" id="1_nhh38"]
 
 [sub_resource type="Theme" id="Theme_lqn3a"]
 default_font = ExtResource("1_2lpt6")
@@ -12,6 +13,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_nhh38")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
@@ -39,7 +41,9 @@ theme_override_constants/outline_size = 20
 theme_override_fonts/font = ExtResource("1_2lpt6")
 text = "DUMBASS"
 
-[node name="Button" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="TryAgainButton" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 theme = SubResource("Theme_lqn3a")
 text = "TRY AGAIN LOSER"
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/TryAgainButton" to="." method="_on_try_again_button_pressed"]

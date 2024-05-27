@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cg8xqqokambh4" path="res://funnyimg4game/level_tilesheet2.png" id="3_wyjm2"]
 [ext_resource type="Texture2D" uid="uid://plvva76lww1r" path="res://funnyimg4game/GrassLand_Background_Guide.png" id="4_gqah1"]
 [ext_resource type="PackedScene" uid="uid://buisa1a6qmxkm" path="res://scenes/coin.tscn" id="5_kg1s0"]
-[ext_resource type="PackedScene" uid="uid://c5dfejv07cd62" path="res://scenes/physics coin.tscn" id="6_8tjtf"]
+[ext_resource type="PackedScene" uid="uid://c5dfejv07cd62" path="res://physics coin.tscn" id="6_8tjtf"]
 [ext_resource type="PackedScene" uid="uid://d0fjqur2xmult" path="res://scenes/ropeSegment.tscn" id="6_s2ww2"]
 [ext_resource type="PackedScene" uid="uid://c2t0six31kkhl" path="res://scenes/rp_snail.tscn" id="10_eonlm"]
 

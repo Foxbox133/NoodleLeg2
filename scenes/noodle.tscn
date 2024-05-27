@@ -145,7 +145,6 @@ health = NodePath("Health")
 
 [node name="Health" type="Node" parent="."]
 script = ExtResource("4_km8o5")
-maxHealth = 0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(1, 0)
