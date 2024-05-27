@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://c2t0six31kkhl"]
+[gd_scene load_steps=14 format=3 uid="uid://c2t0six31kkhl"]
 
 [ext_resource type="Script" path="res://scripts/rp_snail.gd" id="1_t7oji"]
 [ext_resource type="Texture2D" uid="uid://dfmf7rp3c6aca" path="res://funnyimg4game/snail-Sheet.png" id="2_eth56"]
 [ext_resource type="Script" path="res://scripts/health.gd" id="2_hj84n"]
+[ext_resource type="Script" path="res://scripts/hitbox.gd" id="5_fx67i"]
 [ext_resource type="Script" path="res://scripts/hurtbox.gd" id="5_si8aw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2m8sp"]
@@ -81,12 +82,23 @@ position = Vector2(0, 2)
 target_position = Vector2(27, 0)
 
 [node name="HurtBox" type="Area2D" parent="." node_paths=PackedStringArray("health")]
+visible = false
 collision_layer = 0
-collision_mask = 8
+collision_mask = 0
 script = ExtResource("5_si8aw")
 health = NodePath("../Health")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(-1.5, 3)
+shape = SubResource("RectangleShape2D_ctm8s")
+debug_color = Color(0, 0.649895, 0.122899, 0.42)
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("5_fx67i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 position = Vector2(-1.5, 3)
 shape = SubResource("RectangleShape2D_ctm8s")
 debug_color = Color(0, 0.649895, 0.122899, 0.42)

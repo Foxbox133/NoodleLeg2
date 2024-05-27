@@ -1,15 +1,19 @@
 class_name Health
 extends Node
 
-signal maxHealthChanged(difference:int)
+
+signal maxHealthChanged(health:int)
 signal healthDepleted
 signal healthChanged(damageTaken:int)
 
 var immortalityTimer:Timer = null
 
-@export var maxHealth: int = 3: set = setMaxHealth, get = getMaxHealth 
+@export var maxHealth: int = 30: set = setMaxHealth, get = getMaxHealth 
 @export var immortality: bool = false: set = setImmortality, get = getImmortality 
 @export var health: int = maxHealth: set = setHealth, get = getHealth 
+
+func _ready():
+	maxHealthChanged.emit(health)
 
 func getHealth():
 	return health
@@ -17,8 +21,7 @@ func getHealth():
 func setHealth(newHealth:int):
 	if (newHealth<health and immortality):
 		return
-		
-	
+
 	var healthRange=clampi(newHealth,0,maxHealth)
 	
 	if (healthRange!=health):
@@ -33,24 +36,21 @@ func getMaxHealth():
 	return maxHealth
 
 func setMaxHealth(newMaxHealth:int):
-	var minAllowedMaxHealth = 1 if newMaxHealth<=0 else newMaxHealth
-	
-	if (minAllowedMaxHealth!=maxHealth):
-		var difference = minAllowedMaxHealth-maxHealth
-		maxHealth=newMaxHealth
-		maxHealthChanged.emit(difference)
-		
-		if (health>maxHealth):
-			health=maxHealth
-	
+	newMaxHealth = 1 if newMaxHealth<=0 else newMaxHealth
+	maxHealth=newMaxHealth
+	print(newMaxHealth)
+	maxHealthChanged.emit(newMaxHealth)
+	if (health>maxHealth):
+		health=maxHealth
+	if (health == 0):
+		health = maxHealth
+			
 func setImmortality(isImmortal:bool):
 	immortality=isImmortal
 	
 func getImmortality():
 	return immortality
 	
-
-
 func setTemporaryImmortality(time:float):
 	if (immortalityTimer==null):
 		immortalityTimer=Timer.new()
@@ -64,3 +64,6 @@ func setTemporaryImmortality(time:float):
 	immortalityTimer.timeout.connect(setImmortality.bind(false))
 	immortality=true
 	immortalityTimer.start()
+
+	
+	

@@ -1,10 +1,9 @@
-[gd_scene load_steps=30 format=3 uid="uid://ch1ebmgsq6ngt"]
+[gd_scene load_steps=22 format=3 uid="uid://ch1ebmgsq6ngt"]
 
 [ext_resource type="Script" path="res://scripts/noodle.gd" id="1_2uyga"]
 [ext_resource type="Texture2D" uid="uid://kfjpif4ub6h0" path="res://funnyimg4game/spritesheet_V2.png" id="1_23k1l"]
-[ext_resource type="Texture2D" uid="uid://quu5u1uuaybb" path="res://funnyimg4game/Noodle.rework.walk-Sheet.png" id="3_imbj6"]
-[ext_resource type="Script" path="res://scripts/hitbox.gd" id="3_mr54i"]
-[ext_resource type="PackedScene" uid="uid://b16ej0pjj37l1" path="res://scenes/gun.tscn" id="4_xirbu"]
+[ext_resource type="Script" path="res://scripts/health.gd" id="4_km8o5"]
+[ext_resource type="Script" path="res://scripts/hurtbox.gd" id="4_lj6xh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m47tu"]
 atlas = ExtResource("1_23k1l")
@@ -65,34 +64,6 @@ region = Rect2(192, 0, 64, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_xtgk4"]
 atlas = ExtResource("1_23k1l")
 region = Rect2(256, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_yreip"]
-atlas = ExtResource("3_imbj6")
-region = Rect2(0, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_reapt"]
-atlas = ExtResource("3_imbj6")
-region = Rect2(64, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_33vtp"]
-atlas = ExtResource("3_imbj6")
-region = Rect2(128, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_v5s5m"]
-atlas = ExtResource("3_imbj6")
-region = Rect2(192, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_yxg31"]
-atlas = ExtResource("3_imbj6")
-region = Rect2(256, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1j4up"]
-atlas = ExtResource("3_imbj6")
-region = Rect2(320, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_w2bmx"]
-atlas = ExtResource("3_imbj6")
-region = Rect2(384, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jgnpd"]
 animations = [{
@@ -158,32 +129,6 @@ animations = [{
 "texture": SubResource("AtlasTexture_xtgk4")
 }],
 "loop": true,
-"name": &"old running",
-"speed": 12.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_yreip")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_reapt")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_33vtp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_v5s5m")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_yxg31")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1j4up")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_w2bmx")
-}],
-"loop": true,
 "name": &"running",
 "speed": 12.0
 }]
@@ -192,33 +137,35 @@ animations = [{
 radius = 7.0
 height = 38.0
 
-[node name="Noodle" type="CharacterBody2D"]
+[node name="Noodle" type="CharacterBody2D" node_paths=PackedStringArray("health")]
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_2uyga")
+health = NodePath("Health")
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("4_km8o5")
+maxHealth = 0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.546875, 0.546875)
+position = Vector2(1, 0)
 sprite_frames = SubResource("SpriteFrames_jgnpd")
 animation = &"running"
 autoplay = "idle"
-frame_progress = 0.778345
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2.06)
 shape = SubResource("CapsuleShape2D_16466")
 
-[node name="HitBox" type="Area2D" parent="."]
-collision_layer = 8
-collision_mask = 0
-script = ExtResource("3_mr54i")
+[node name="HurtBox" type="Area2D" parent="." node_paths=PackedStringArray("health")]
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("4_lj6xh")
+health = NodePath("../Health")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 position = Vector2(0, -1)
 shape = SubResource("CapsuleShape2D_16466")
-
-[node name="Gun" parent="." instance=ExtResource("4_xirbu")]
-position = Vector2(-1, -12)
 
 [node name="downGroundCast" type="RayCast2D" parent="."]
 target_position = Vector2(0, 26)
@@ -261,3 +208,8 @@ position = Vector2(0, 18)
 target_position = Vector2(12, 0)
 
 [node name="Line2D" type="Line2D" parent="rightStairLowerRayCast"]
+
+[connection signal="healthChanged" from="Health" to="." method="_on_health_health_changed"]
+[connection signal="healthDepleted" from="Health" to="." method="_on_health_health_depleted"]
+[connection signal="maxHealthChanged" from="Health" to="." method="_on_health_max_health_changed"]
+[connection signal="recievedDamage" from="HurtBox" to="Health" method="_on_hurt_box_recieved_damage"]

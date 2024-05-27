@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bjjpv6ao76fur"]
+[gd_scene load_steps=7 format=3 uid="uid://b16ej0pjj37l1"]
 
 [ext_resource type="Script" path="res://scripts/gun.gd" id="1_isa57"]
 [ext_resource type="Texture2D" uid="uid://kfjpif4ub6h0" path="res://funnyimg4game/spritesheet_V2.png" id="2_xrple"]
@@ -32,13 +32,16 @@ animations = [{
 script = ExtResource("1_isa57")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.385, 0.57)
 shape = SubResource("CircleShape2D_ydc7i")
 
 [node name="WeaponPivot" type="Marker2D" parent="."]
+position = Vector2(-16.13, 0)
 
 [node name="GunArm" type="AnimatedSprite2D" parent="WeaponPivot"]
+position = Vector2(13.13, 0)
 sprite_frames = SubResource("SpriteFrames_bpeg3")
 
 [node name="ShootingPoint" type="Marker2D" parent="WeaponPivot/GunArm"]
 unique_name_in_owner = true
-position = Vector2(17, -1)
+position = Vector2(1.5, 0.485)

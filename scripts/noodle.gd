@@ -8,14 +8,14 @@ const JUMP_VELOCITY = -350.0
 const PUSH_FORCE = 80
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+@export var health: Health 
+@export var startHealth: int = 30
 
 @onready var noodleSprite = $AnimatedSprite2D
-
 @onready var gun = $Gun
 @onready var groundRayDown = $downGroundCast
 @onready var groundRaySlopeLeft = $leftGroundCast
 @onready var groundRaySlopeRight = $rightGroundCast
-
 @onready var stepRayRight = $rightStairRayCasy
 @onready var stepRayLeft = $leftStairRayCasy
 @onready var stepRayRightLower = $rightStairLowerRayCast
@@ -24,7 +24,8 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 
 
-#func _ready():
+func _ready():
+	health.setMaxHealth(startHealth)
 	#$leftGroundCast/Line2D.add_point(groundRaySlopeLeft.position)
 	#$leftGroundCast/Line2D.add_point(groundRaySlopeLeft.target_position)
 	#$leftGroundCast/Line2D.width = 1
@@ -154,6 +155,26 @@ func _physics_process(delta):
 	move_and_slide()
 	
 	for i in get_slide_collision_count():
+
 		var coliding_body=get_slide_collision(i)
 		if coliding_body.get_collider() is RigidBody2D:
-			coliding_body.get_collider().apply_central_impulse(-coliding_body.get_normal()*PUSH_FORCE)
+			#print("collision position = " + str(coliding_body.get_position().normalized()))
+			#print("player position = " + str(position.normalized()))
+			var difference_x = coliding_body.get_position().x - position.x
+			var sideOfCollision = clamp(difference_x, -1, 1)
+			#print(sideOfCollision)
+			if coliding_body.get_position().dot(position) >= 0 && sideOfCollision == direction:
+				coliding_body.get_collider().apply_central_impulse(-coliding_body.get_normal() * PUSH_FORCE)
+			
+
+signal playerMaxHealthUpdate(maxHealth)
+func _on_health_max_health_changed(health):
+	playerMaxHealthUpdate.emit(health)
+
+signal playerHealthDepleted()
+func _on_health_health_depleted():
+	playerHealthDepleted.emit()
+
+signal playerHealthUpdate(damageTaken)
+func _on_health_health_changed(damageTaken):
+	playerHealthUpdate.emit(damageTaken)
