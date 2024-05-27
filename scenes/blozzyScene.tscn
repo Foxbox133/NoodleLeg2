@@ -1103,7 +1103,8 @@ position = Vector2(38, 213)
 
 [node name="RigidBody2D" type="RigidBody2D" parent="Level"]
 position = Vector2(-52, 255)
-collision_layer = 3
+collision_layer = 67
+collision_mask = 65
 
 [node name="Sprite2D" type="Sprite2D" parent="Level/RigidBody2D"]
 position = Vector2(0, 1)
@@ -1128,6 +1129,8 @@ node_b = NodePath("../segment")
 
 [node name="segment" parent="Rope" instance=ExtResource("6_s2ww2")]
 position = Vector2(3, 207)
+collision_layer = 65
+collision_mask = 65
 
 [node name="PinJoint2D" type="PinJoint2D" parent="Rope"]
 position = Vector2(3, 224)
@@ -1136,6 +1139,8 @@ node_b = NodePath("../segment2")
 
 [node name="segment2" parent="Rope" instance=ExtResource("6_s2ww2")]
 position = Vector2(3, 240)
+collision_layer = 65
+collision_mask = 65
 
 [node name="PinJoint2D3" type="PinJoint2D" parent="Rope"]
 position = Vector2(3, 257)
@@ -1144,10 +1149,14 @@ node_b = NodePath("../segment3")
 
 [node name="segment3" parent="Rope" instance=ExtResource("6_s2ww2")]
 position = Vector2(3, 273)
+collision_layer = 65
+collision_mask = 65
 
 [node name="Noodle" parent="." instance=ExtResource("3_pyios")]
 top_level = true
 position = Vector2(-116.375, 244.615)
+collision_layer = 67
+collision_mask = 67
 
 [node name="Camera2D" type="Camera2D" parent="Noodle"]
 zoom = Vector2(4, 4)
