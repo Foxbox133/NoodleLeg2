@@ -1,6 +1,5 @@
-[gd_scene load_steps=4 format=3 uid="uid://d0whirglbvpp"]
+[gd_scene load_steps=3 format=3 uid="uid://cbj0mj58x6omb"]
 
-[ext_resource type="Script" path="res://scenes/Interface.gd" id="1_letj2"]
 [ext_resource type="Texture2D" uid="uid://bybutg5swq3ox" path="res://funnyimg4game/coinFella.png" id="2_7lqu5"]
 [ext_resource type="Texture2D" uid="uid://hb512vuoln3p" path="res://funnyimg4game/healthSprite.png" id="3_d7uvw"]
 
@@ -13,7 +12,6 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-script = ExtResource("1_letj2")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0

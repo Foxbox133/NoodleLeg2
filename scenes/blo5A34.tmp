@@ -1,8 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://blkbwah67652r"]
+[gd_scene load_steps=15 format=3 uid="uid://blkbwah67652r"]
 
 [ext_resource type="PackedScene" uid="uid://cbj0mj58x6omb" path="res://scenes/interface.tscn" id="1_i76p5"]
 [ext_resource type="PackedScene" uid="uid://dgu40la7hpcuu" path="res://scenes/game_over_screen.tscn" id="2_100xc"]
-[ext_resource type="Script" path="res://scripts/interface.gd" id="2_c78c0"]
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="2_jx2nq"]
 [ext_resource type="PackedScene" uid="uid://ch1ebmgsq6ngt" path="res://scenes/noodle.tscn" id="3_pyios"]
 [ext_resource type="Texture2D" uid="uid://cg8xqqokambh4" path="res://funnyimg4game/level_tilesheet2.png" id="3_wyjm2"]
@@ -1066,7 +1065,6 @@ radius = 20.0998
 [node name="Interface" parent="hud layer" instance=ExtResource("1_i76p5")]
 offset_top = -2.0
 offset_bottom = -2.0
-script = ExtResource("2_c78c0")
 
 [node name="GameOverScreen" parent="hud layer" instance=ExtResource("2_100xc")]
 unique_name_in_owner = true

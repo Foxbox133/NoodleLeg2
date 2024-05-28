@@ -5,6 +5,7 @@ var PlayerHealth = 0
 @onready var game_over_screen = %GameOverScreen
 
 
+
 func add_point():
 	points +=1
 	var interface = get_node("Interface")
@@ -12,7 +13,7 @@ func add_point():
 	if (interface != null):
 		interface.displayPoints(points)
 	emit_signal("updatePointsScore", points)
-
+	updatePointsScore.emit()
 
 func _input(event):
 	# Restart Scene on R press
@@ -35,7 +36,8 @@ func _on_noodle_player_health_depleted():
 
 
 func _on_noodle_player_health_update(damageTaken):
-	print("damage owieZowie")
+	print("playterhealth is:", PlayerHealth)
+	
 	PlayerHealth += damageTaken
 	updatePlayerHealth.emit(PlayerHealth)
 
