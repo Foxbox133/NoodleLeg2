@@ -8,14 +8,13 @@ var PlayerHealth = 0
 
 func add_point():
 	points +=1
-	var interface = get_node("Interface")
-	print(interface)
-	if (interface != null):
-		interface.displayPoints(points)
+	#var interface = get_node("interface")
+	#if (interface != null):
+	#	interface.displayPoints(points)
 	emit_signal("updatePointsScore", points)
-	updatePointsScore.emit()
+	
 
-func _input(event):
+func _input(_event):
 	# Restart Scene on R press
 	if Input.is_key_pressed(KEY_R):
 		get_tree().reload_current_scene()
@@ -36,15 +35,17 @@ func _on_noodle_player_health_depleted():
 
 
 func _on_noodle_player_health_update(damageTaken):
-	print("playterhealth is:", PlayerHealth)
-	
+	print("playterhealth is: ", PlayerHealth)
 	PlayerHealth += damageTaken
+	print("damage taken was: ", damageTaken)
+	print("playterhealth is now: ", damageTaken)
 	updatePlayerHealth.emit(PlayerHealth)
 
 
 func _on_noodle_player_max_health_update(maxHealth):
+	print("new play: ", PlayerHealth)
 	PlayerHealth = maxHealth
-	print(PlayerHealth)
+	print("new play: ", PlayerHealth)
 	updatePlayerHealth.emit(PlayerHealth)
 
 

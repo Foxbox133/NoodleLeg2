@@ -9,10 +9,12 @@ const PUSH_FORCE = 80
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @export var health: Health 
-@export var startHealth: int = 30
+@export var startHealth: int = 5
+
 
 @onready var noodleSprite = $AnimatedSprite2D
-@onready var gun = $Gun
+@onready var spawntimer = $Spawntimer
+
 @onready var groundRayDown = $downGroundCast
 @onready var groundRaySlopeLeft = $leftGroundCast
 @onready var groundRaySlopeRight = $rightGroundCast
@@ -25,6 +27,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 
 func _ready():
+	spawntimer.start()
 	health.setMaxHealth(startHealth)
 	#$leftGroundCast/Line2D.add_point(groundRaySlopeLeft.position)
 	#$leftGroundCast/Line2D.add_point(groundRaySlopeLeft.target_position)
@@ -79,7 +82,7 @@ func checkSlope():
 	var downCollide = groundRayDown.is_colliding()
 	var isCloseToSlope = (leftCollide || rightCollide)
 
-	return isCloseToSlope && groundRayDown
+	return isCloseToSlope && downCollide
 	
 func checkSlopeLeft():
 	var isCloseToSlope = groundRaySlopeLeft.is_colliding()
@@ -168,8 +171,8 @@ func _physics_process(delta):
 			
 
 signal playerMaxHealthUpdate(maxHealth)
-func _on_health_max_health_changed(health):
-	playerMaxHealthUpdate.emit(health)
+func _on_health_max_health_changed(newMaxHealth):
+	playerMaxHealthUpdate.emit(newMaxHealth)
 
 signal playerHealthDepleted()
 func _on_health_health_depleted():
@@ -177,4 +180,5 @@ func _on_health_health_depleted():
 
 signal playerHealthUpdate(damageTaken)
 func _on_health_health_changed(damageTaken):
-	playerHealthUpdate.emit(damageTaken)
+	#if !spawntimer.is():
+		playerHealthUpdate.emit(damageTaken)

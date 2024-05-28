@@ -38,7 +38,7 @@ func getMaxHealth():
 func setMaxHealth(newMaxHealth:int):
 	newMaxHealth = 1 if newMaxHealth<=0 else newMaxHealth
 	maxHealth=newMaxHealth
-	print(newMaxHealth)
+	print("newmaxHealth: ",newMaxHealth)
 	maxHealthChanged.emit(newMaxHealth)
 	if (health>maxHealth):
 		health=maxHealth

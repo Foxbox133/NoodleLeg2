@@ -11,11 +11,14 @@ func displayPoints(points):
 	score_label.text= str(points)
 
 func updateHealth(health):
-	print(health)
+	print("health is: ",health)
 	if (!health):
+		print("health changed: ",health)
 		health = -1
+		print("health changed: ",health)
 	if (!health_label):
 		return
+	print("health changed now is: ",health)
 	health_label.text = str(health)
 
 

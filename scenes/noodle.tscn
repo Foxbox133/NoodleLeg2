@@ -208,6 +208,9 @@ target_position = Vector2(12, 0)
 
 [node name="Line2D" type="Line2D" parent="rightStairLowerRayCast"]
 
+[node name="Spawntimer" type="Timer" parent="."]
+wait_time = 2.0
+
 [connection signal="healthChanged" from="Health" to="." method="_on_health_health_changed"]
 [connection signal="healthDepleted" from="Health" to="." method="_on_health_health_depleted"]
 [connection signal="maxHealthChanged" from="Health" to="." method="_on_health_max_health_changed"]
