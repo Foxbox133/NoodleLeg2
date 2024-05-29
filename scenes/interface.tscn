@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://cbj0mj58x6omb"]
+[gd_scene load_steps=3 format=3 uid="uid://d0whirglbvpp"]
 
 [ext_resource type="Texture2D" uid="uid://bybutg5swq3ox" path="res://funnyimg4game/coinFella.png" id="2_7lqu5"]
 [ext_resource type="Texture2D" uid="uid://hb512vuoln3p" path="res://funnyimg4game/healthSprite.png" id="3_d7uvw"]

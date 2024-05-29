@@ -1,16 +1,17 @@
-[gd_scene load_steps=16 format=3 uid="uid://blkbwah67652r"]
+[gd_scene load_steps=17 format=3 uid="uid://blkbwah67652r"]
 
-[ext_resource type="PackedScene" uid="uid://cbj0mj58x6omb" path="res://scenes/interface.tscn" id="1_i76p5"]
-[ext_resource type="PackedScene" uid="uid://dgu40la7hpcuu" path="res://scenes/game_over_screen.tscn" id="2_100xc"]
+[ext_resource type="PackedScene" uid="uid://d0whirglbvpp" path="res://scenes/interface.tscn" id="1_i76p5"]
+[ext_resource type="PackedScene" uid="uid://dlkx23mvx1bmn" path="res://scenes/game_over_screen.tscn" id="2_100xc"]
 [ext_resource type="Script" path="res://scripts/interface.gd" id="2_c78c0"]
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="2_jx2nq"]
 [ext_resource type="PackedScene" uid="uid://ch1ebmgsq6ngt" path="res://scenes/noodle.tscn" id="3_pyios"]
 [ext_resource type="Texture2D" uid="uid://cg8xqqokambh4" path="res://funnyimg4game/level_tilesheet2.png" id="3_wyjm2"]
 [ext_resource type="Texture2D" uid="uid://plvva76lww1r" path="res://funnyimg4game/GrassLand_Background_Guide.png" id="4_gqah1"]
 [ext_resource type="PackedScene" uid="uid://buisa1a6qmxkm" path="res://scenes/coin.tscn" id="5_kg1s0"]
-[ext_resource type="PackedScene" uid="uid://c5dfejv07cd62" path="res://scenes/physics coin.tscn" id="6_8tjtf"]
 [ext_resource type="PackedScene" uid="uid://d0fjqur2xmult" path="res://scenes/ropeSegment.tscn" id="6_s2ww2"]
 [ext_resource type="PackedScene" uid="uid://c2t0six31kkhl" path="res://scenes/rp_snail.tscn" id="10_eonlm"]
+[ext_resource type="PackedScene" uid="uid://1uqgmfsn2e7m" path="res://scenes/lil_crossiant.tscn" id="11_83lsi"]
+[ext_resource type="PackedScene" uid="uid://bowe6tft45mho" path="res://scenes/Enemies/Bakery/lil_croissant_2.tscn" id="12_a3tkr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gfu02"]
 texture = ExtResource("3_wyjm2")
@@ -1060,6 +1061,7 @@ sources/0 = SubResource("TileSetAtlasSource_gfu02")
 radius = 20.0998
 
 [node name="BlozzyScene" type="Node2D"]
+position = Vector2(7, 4)
 
 [node name="hud layer" type="CanvasLayer" parent="."]
 
@@ -1106,12 +1108,6 @@ position = Vector2(545, 53)
 [node name="Coin6" parent="Level/Coins" instance=ExtResource("5_kg1s0")]
 position = Vector2(38, 213)
 
-[node name="RigidBody2D" parent="Level" instance=ExtResource("6_8tjtf")]
-position = Vector2(-230, 68)
-
-[node name="RigidBody2D2" parent="Level" instance=ExtResource("6_8tjtf")]
-position = Vector2(-455, 81)
-
 [node name="Rope" type="Node" parent="."]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Rope"]
@@ -1153,9 +1149,10 @@ collision_mask = 65
 
 [node name="Noodle" parent="." instance=ExtResource("3_pyios")]
 top_level = true
-position = Vector2(-84, 79)
+position = Vector2(-115, 85)
 collision_layer = 67
 collision_mask = 67
+floor_stop_on_slope = false
 
 [node name="Camera2D" type="Camera2D" parent="Noodle"]
 zoom = Vector2(4, 4)
@@ -1164,6 +1161,12 @@ position_smoothing_speed = 10.0
 
 [node name="RPSnail" parent="." instance=ExtResource("10_eonlm")]
 position = Vector2(-587, 141)
+
+[node name="lilCrossiant" parent="." instance=ExtResource("11_83lsi")]
+position = Vector2(-405, 72)
+
+[node name="lilCroissant2" parent="." instance=ExtResource("12_a3tkr")]
+position = Vector2(16, 56)
 
 [connection signal="restartLevel" from="hud layer/GameOverScreen" to="GameManager" method="_on_game_over_screen_restart_level"]
 [connection signal="updatePlayerHealth" from="GameManager" to="hud layer/Interface" method="_on_game_manager_update_player_health"]
