@@ -82,7 +82,7 @@ func checkSlope():
 	var downCollide = groundRayDown.is_colliding()
 	var isCloseToSlope = (leftCollide || rightCollide)
 
-	return isCloseToSlope && downCollide
+	return isCloseToSlope or downCollide
 	
 func checkSlopeLeft():
 	var isCloseToSlope = groundRaySlopeLeft.is_colliding()
