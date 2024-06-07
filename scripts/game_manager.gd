@@ -19,10 +19,9 @@ func add_point():
 
 func _input(_event):
 	# Restart Scene on R press
-	if Input.is_key_pressed(KEY_R):
+	if Input.is_action_just_pressed("reload_button"):
 		get_tree().reload_current_scene()
-		
-	if Input.is_key_pressed(KEY_ESCAPE):
+	if Input.is_action_just_pressed("pause_button"):
 		pauseGame()
 
 func pauseGame():
