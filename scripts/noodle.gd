@@ -11,6 +11,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @export var health: Health 
 @export var startHealth: int = 5
 
+var damageEnabled=false
 
 @onready var noodleSprite = $AnimatedSprite2D
 @onready var spawntimer = $Spawntimer
@@ -180,5 +181,13 @@ func _on_health_health_depleted():
 
 signal playerHealthUpdate(damageTaken)
 func _on_health_health_changed(damageTaken):
-	#if !spawntimer.is():
+	if damageTaken>0:
+		print ("healing ", damageTaken, " hp")
+	if damageEnabled:
 		playerHealthUpdate.emit(damageTaken)
+
+
+func _on_spawntimer_timeout():
+	damageEnabled=true
+
+

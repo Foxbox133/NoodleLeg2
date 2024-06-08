@@ -14,7 +14,7 @@ func updateHealth(health):
 	print("health is: ",health)
 	if (!health):
 		print("health changed: ",health)
-		health = -1
+		#health = -1
 		print("health changed: ",health)
 	if (!health_label):
 		return

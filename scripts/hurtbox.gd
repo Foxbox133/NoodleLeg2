@@ -14,10 +14,15 @@ func _on_area_entered(hitbox:HitBox)-> void:
 		if (health == null):
 			print("nohealt")
 		else:
-			print("ochieochie")
+			var previousHealth=health.health
+			print(health.health)
 			print(hitbox.damage)
 			health.health-=hitbox.damage
 			print(health.health)
-			recievedDamage.emit(hitbox.damage)
+			if health.health==previousHealth:
+				print("no healing needed")
+			else:
+				recievedDamage.emit(hitbox.damage)
+				hitbox.queue_free()
 	else:
 		print("null!!!")

@@ -51,3 +51,7 @@ func _on_noodle_player_max_health_update(maxHealth):
 
 func _on_game_over_screen_restart_level():
 	get_tree().reload_current_scene()
+
+
+
+
