@@ -22,7 +22,9 @@ func _on_area_entered(hitbox:HitBox)-> void:
 			if health.health==previousHealth:
 				print("no healing needed")
 			else:
+				print("ow")
 				recievedDamage.emit(hitbox.damage)
-				hitbox.queue_free()
+				if hitbox.damage<0:
+					hitbox.queue_free()
 	else:
 		print("null!!!")

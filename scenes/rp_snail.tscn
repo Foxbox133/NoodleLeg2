@@ -57,7 +57,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ctm8s"]
-size = Vector2(53, 24)
+size = Vector2(50.25, 29)
 
 [node name="RPSnail" type="Node2D"]
 script = ExtResource("1_t7oji")
@@ -82,24 +82,23 @@ position = Vector2(0, 2)
 target_position = Vector2(27, 0)
 
 [node name="HurtBox" type="Area2D" parent="." node_paths=PackedStringArray("health")]
-visible = false
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("5_si8aw")
 health = NodePath("../Health")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
-position = Vector2(-1.5, 3)
 shape = SubResource("RectangleShape2D_ctm8s")
 debug_color = Color(0, 0.649895, 0.122899, 0.42)
 
 [node name="HitBox" type="Area2D" parent="."]
 collision_layer = 8
 collision_mask = 8
+priority = 1
 script = ExtResource("5_fx67i")
+damage = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-position = Vector2(-1.5, 3)
 shape = SubResource("RectangleShape2D_ctm8s")
 debug_color = Color(0, 0.649895, 0.122899, 0.42)
 

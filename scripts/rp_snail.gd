@@ -21,4 +21,5 @@ func _process(delta):
 
 
 func _on_health_health_depleted():
+	print("snail ded")
 	queue_free()

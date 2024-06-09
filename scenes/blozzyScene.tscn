@@ -1154,7 +1154,7 @@ collision_mask = 65
 [node name="Noodle" parent="." instance=ExtResource("3_pyios")]
 top_level = true
 position = Vector2(-98, 82)
-collision_layer = 67
+collision_layer = 75
 collision_mask = 67
 floor_stop_on_slope = false
 
