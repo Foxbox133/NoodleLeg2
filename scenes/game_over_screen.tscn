@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dgu40la7hpcuu"]
+[gd_scene load_steps=4 format=3 uid="uid://dlkx23mvx1bmn"]
 
 [ext_resource type="FontFile" uid="uid://mtisoocy6hs8" path="res://Minecraft.ttf" id="1_2lpt6"]
 [ext_resource type="Script" path="res://scripts/game_over_screen.gd" id="1_nhh38"]

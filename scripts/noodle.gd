@@ -83,7 +83,7 @@ func checkSlope():
 	var downCollide = groundRayDown.is_colliding()
 	var isCloseToSlope = (leftCollide || rightCollide)
 
-	return isCloseToSlope && downCollide
+	return isCloseToSlope or downCollide
 	
 func checkSlopeLeft():
 	var isCloseToSlope = groundRaySlopeLeft.is_colliding()
@@ -147,11 +147,11 @@ func _physics_process(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	
-	if (stairLeft() && direction == -1 && velocity.x != 0):
-		velocity.y += -20
+	##if (stairLeft() && direction == -1 && velocity.x != 0):
+		# velocity.y += -20
 		#print("Step Found left")
-	elif (stairRight() && direction == 1 && velocity.x != 0): 
-		velocity.y += -20
+	##elif (stairRight() && direction == 1 && velocity.x != 0): 
+		# velocity.y += -20
 		#print("Step Found right")
 	#else:
 		#print("no step")

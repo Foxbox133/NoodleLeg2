@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://syq80rl0hsls" path="res://funnyimg4game/blueSky.png" id="6_fbmyt"]
 [ext_resource type="PackedScene" uid="uid://buisa1a6qmxkm" path="res://scenes/coin.tscn" id="7_qpyfs"]
 [ext_resource type="PackedScene" uid="uid://c2t0six31kkhl" path="res://scenes/rp_snail.tscn" id="9_6g6e4"]
+[ext_resource type="PackedScene" uid="uid://d0whirglbvpp" path="res://scenes/interface.tscn" id="9_f4vta"]
 [ext_resource type="PackedScene" uid="uid://1uqgmfsn2e7m" path="res://scenes/lil_crossiant.tscn" id="10_wy6wr"]
 [ext_resource type="PackedScene" uid="uid://c0itbjquv8qj2" path="res://scenes/healingitem.tscn" id="12_pkknb"]
 [ext_resource type="Texture2D" uid="uid://cdfo43ax7yqr5" path="res://funnyimg4game/jöbns blueberry.png" id="13_llev7"]

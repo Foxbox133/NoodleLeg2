@@ -4,7 +4,10 @@ var points = 0
 var PlayerHealth = 0
 @onready var game_over_screen = %GameOverScreen
 
+@export var pauseScreen: Node
 
+func _ready():
+	process_mode = Node.PROCESS_MODE_ALWAYS
 
 func add_point():
 	points +=1
@@ -16,8 +19,23 @@ func add_point():
 
 func _input(_event):
 	# Restart Scene on R press
-	if Input.is_key_pressed(KEY_R):
+	if Input.is_action_just_pressed("reload_button"):
 		get_tree().reload_current_scene()
+	if Input.is_action_just_pressed("pause_button"):
+		pauseGame()
+
+func pauseGame():
+	if get_tree().paused == false:
+		get_tree().paused = true
+		pauseScreen.show()
+		print("pause")
+	elif get_tree().paused == true:
+		get_tree().paused = false
+		pauseScreen.hide()
+		print("unpause")
+
+
+
 
 func killPlayer():
 	# Implement that shit
@@ -53,5 +71,5 @@ func _on_game_over_screen_restart_level():
 	get_tree().reload_current_scene()
 
 
-
-
+func _on_pause_screen_resume_game():
+	pauseGame()
