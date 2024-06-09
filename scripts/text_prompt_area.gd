@@ -1,15 +1,25 @@
 extends Area2D
 
+@onready var label = $Label
+var counter=0
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	
+	
+	if ((label.visible==true) and (Input.is_action_just_pressed("interact"))):
+		counter=counter+1
+		label.text="you pressed 'E' " + str(counter) + " times!"
+		print(str(counter))
+
+func _ready():
+	label.visible=false
+
 
 
 func _on_body_entered(body):
-	pass # Replace with function body.
+	label.visible=true
+	
+	
+
+func _on_body_exited(body):
+	label.hide()

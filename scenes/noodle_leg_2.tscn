@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://n34s3ge2xnro"]
+[gd_scene load_steps=27 format=3 uid="uid://n34s3ge2xnro"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_5hp3r"]
 [ext_resource type="PackedScene" uid="uid://ch1ebmgsq6ngt" path="res://scenes/noodle.tscn" id="1_gei24"]
@@ -9,10 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://syq80rl0hsls" path="res://funnyimg4game/blueSky.png" id="6_fbmyt"]
 [ext_resource type="PackedScene" uid="uid://buisa1a6qmxkm" path="res://scenes/coin.tscn" id="7_qpyfs"]
 [ext_resource type="PackedScene" uid="uid://c2t0six31kkhl" path="res://scenes/rp_snail.tscn" id="9_6g6e4"]
-[ext_resource type="PackedScene" uid="uid://cbj0mj58x6omb" path="res://scenes/interface.tscn" id="9_f4vta"]
 [ext_resource type="PackedScene" uid="uid://1uqgmfsn2e7m" path="res://scenes/lil_crossiant.tscn" id="10_wy6wr"]
 [ext_resource type="PackedScene" uid="uid://c0itbjquv8qj2" path="res://scenes/healingitem.tscn" id="12_pkknb"]
 [ext_resource type="Texture2D" uid="uid://cdfo43ax7yqr5" path="res://funnyimg4game/jöbns blueberry.png" id="13_llev7"]
+[ext_resource type="PackedScene" uid="uid://bdpj23ll3gqa1" path="res://scenes/text_prompt_area.tscn" id="14_ikx7k"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bc6jt"]
 texture = ExtResource("2_et80k")
@@ -1034,12 +1034,11 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_periy"]
+radius = 55.0364
+
 [node name="Noodle Leg 2" type="Node2D"]
 position = Vector2(8, 80)
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Interface" parent="CanvasLayer" instance=ExtResource("9_f4vta")]
 
 [node name="GameManager" type="Node" parent="."]
 unique_name_in_owner = true
@@ -1048,6 +1047,7 @@ script = ExtResource("1_5hp3r")
 [node name="Noodle" parent="." instance=ExtResource("1_gei24")]
 top_level = true
 position = Vector2(13, 66)
+collision_layer = 11
 
 [node name="Camera2D" type="Camera2D" parent="Noodle"]
 zoom = Vector2(4, 4)
@@ -1184,4 +1184,10 @@ damage = -1
 sprite_frames = SubResource("SpriteFrames_30x6v")
 autoplay = "default"
 
-[connection signal="updatePointsScore" from="GameManager" to="CanvasLayer/Interface" method="_on_game_manager_update_points_score"]
+[node name="TextPromptArea" parent="." instance=ExtResource("14_ikx7k")]
+position = Vector2(426, -113)
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TextPromptArea"]
+shape = SubResource("CircleShape2D_periy")
