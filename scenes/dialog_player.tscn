@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://dbp3ffco125lk"]
+
+[ext_resource type="Script" path="res://scripts/dialog_player.gd" id="1_0y0v4"]
+[ext_resource type="FontFile" uid="uid://mtisoocy6hs8" path="res://Minecraft.ttf" id="2_dq3rr"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_mh0eo"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7tlq3"]
+font = ExtResource("2_dq3rr")
+font_color = Color(0.0223746, 0, 0.780013, 1)
+outline_color = Color(0, 0, 0, 1)
+
+[node name="DialogPlayer" type="CanvasLayer"]
+script = ExtResource("1_0y0v4")
+
+[node name="Background" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+texture = SubResource("CanvasTexture_mh0eo")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 56.0
+offset_bottom = 23.0
+label_settings = SubResource("LabelSettings_7tlq3")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://n34s3ge2xnro"]
+[gd_scene load_steps=28 format=3 uid="uid://n34s3ge2xnro"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_5hp3r"]
 [ext_resource type="PackedScene" uid="uid://ch1ebmgsq6ngt" path="res://scenes/noodle.tscn" id="1_gei24"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://c0itbjquv8qj2" path="res://scenes/healingitem.tscn" id="12_pkknb"]
 [ext_resource type="Texture2D" uid="uid://cdfo43ax7yqr5" path="res://funnyimg4game/jöbns blueberry.png" id="13_llev7"]
 [ext_resource type="PackedScene" uid="uid://bdpj23ll3gqa1" path="res://scenes/text_prompt_area.tscn" id="14_ikx7k"]
+[ext_resource type="PackedScene" uid="uid://dbp3ffco125lk" path="res://scenes/dialog_player.tscn" id="14_kdgg8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bc6jt"]
 texture = ExtResource("2_et80k")
@@ -1188,6 +1189,10 @@ autoplay = "default"
 position = Vector2(426, -113)
 collision_layer = 0
 collision_mask = 8
+dialog_key = "test"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TextPromptArea"]
 shape = SubResource("CircleShape2D_periy")
+
+[node name="DialogPlayer" parent="." instance=ExtResource("14_kdgg8")]
+dialog_text_file = "res://scenes/dialog_text.json"
