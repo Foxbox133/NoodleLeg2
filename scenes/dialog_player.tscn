@@ -7,18 +7,23 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_7tlq3"]
 font = ExtResource("2_dq3rr")
-font_color = Color(0.0223746, 0, 0.780013, 1)
+font_size = 33
+font_color = Color(0.968788, 0, 0.00233511, 1)
 outline_color = Color(0, 0, 0, 1)
 
 [node name="DialogPlayer" type="CanvasLayer"]
 script = ExtResource("1_0y0v4")
 
 [node name="Background" type="TextureRect" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 101.0
+offset_top = 505.0
+offset_right = 1070.0
+offset_bottom = 580.0
 texture = SubResource("CanvasTexture_mh0eo")
 
 [node name="Label" type="Label" parent="."]
-offset_right = 56.0
-offset_bottom = 23.0
+offset_left = 101.0
+offset_top = 506.0
+offset_right = 1072.0
+offset_bottom = 581.0
 label_settings = SubResource("LabelSettings_7tlq3")

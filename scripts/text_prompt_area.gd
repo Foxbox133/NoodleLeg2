@@ -11,7 +11,7 @@ func _process(delta):
 	if ( area_active and (Input.is_action_just_pressed("interact"))):
 		counter=counter+1
 		Signalbus.emit_signal("display_dialog", dialog_key)
-		#label.text="you pressed 'E' " + str(counter) + " times!"
+		
 		print("areea works")
 
 func _ready():
