@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dbp3ffco125lk"]
+[gd_scene load_steps=15 format=3 uid="uid://dbp3ffco125lk"]
 
 [ext_resource type="Script" path="res://scripts/dialog_player.gd" id="1_0y0v4"]
 [ext_resource type="FontFile" uid="uid://mtisoocy6hs8" path="res://Minecraft.ttf" id="2_dq3rr"]
+[ext_resource type="Texture2D" uid="uid://dfmf7rp3c6aca" path="res://funnyimg4game/snail-Sheet.png" id="3_t835g"]
+[ext_resource type="Texture2D" uid="uid://hb512vuoln3p" path="res://funnyimg4game/healthSprite.png" id="4_w0jfr"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_mh0eo"]
 
@@ -10,6 +12,68 @@ font = ExtResource("2_dq3rr")
 font_size = 33
 font_color = Color(0.968788, 0, 0.00233511, 1)
 outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_knire"]
+atlas = ExtResource("3_t835g")
+region = Rect2(0, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mykaq"]
+atlas = ExtResource("3_t835g")
+region = Rect2(64, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f5ygy"]
+atlas = ExtResource("3_t835g")
+region = Rect2(128, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cwb7x"]
+atlas = ExtResource("3_t835g")
+region = Rect2(192, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wtmfl"]
+atlas = ExtResource("3_t835g")
+region = Rect2(256, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_401v2"]
+atlas = ExtResource("3_t835g")
+region = Rect2(320, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n57tk"]
+atlas = ExtResource("4_w0jfr")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2m60i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_knire")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mykaq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f5ygy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cwb7x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wtmfl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_401v2")
+}],
+"loop": true,
+"name": &"snail",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n57tk")
+}],
+"loop": true,
+"name": &"test",
+"speed": 5.0
+}]
 
 [node name="DialogPlayer" type="CanvasLayer"]
 script = ExtResource("1_0y0v4")
@@ -27,3 +91,9 @@ offset_top = 506.0
 offset_right = 1072.0
 offset_bottom = 581.0
 label_settings = SubResource("LabelSettings_7tlq3")
+
+[node name="NPCSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(1030, 542)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_2m60i")
+animation = &"test"

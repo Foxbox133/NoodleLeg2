@@ -8,8 +8,10 @@ var current_selected_text = []
 var reading_in_progress=false
 @onready var background = $Background
 @onready var label = $Label
+@onready var npc_sprite = $NPCSprite
 
 func _ready():
+	npc_sprite.hide()
 	background.visible=false
 	scene_text=load_scene_text()
 
@@ -52,9 +54,11 @@ func finish():
 
 func on_display_dialog(text_key):
 	if reading_in_progress:
+		npc_sprite.show()
+		npc_sprite.play(text_key)
 		next_line()
 	else:
-		#get_tree().paused=true
+		npc_sprite.hide()
 		background.visible=true
 		reading_in_progress=true
 		current_selected_text = scene_text[text_key].duplicate()
